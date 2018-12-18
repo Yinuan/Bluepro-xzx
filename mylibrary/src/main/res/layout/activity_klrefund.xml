@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_menu_style"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+       android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="水费钱包余额(元)"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_color"/>
+
+        <TextView
+            android:id="@+id/et_refund_money_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/txt_two"
+
+            android:textSize="16sp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/edit_bg"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp">
+
+        <TextView
+            android:id="@+id/kl_refund_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退款金额"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="16sp"
+            android:textColor="@color/text_color"
+            />
+
+
+        <TextView
+            android:id="@+id/kl_refund_txt_view"
+            android:layout_toRightOf="@+id/kl_refund_txt"
+            android:layout_marginLeft="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            />
+        <EditText
+            android:id="@+id/et_refund_money"
+            android:layout_toRightOf="@+id/kl_refund_txt_view"
+            android:layout_alignParentBottom="true"
+            android:text=""
+            android:textColor="@color/base_color"
+            android:textSize="20sp"
+            android:gravity="bottom"
+            android:inputType="number|numberDecimal"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cursorVisible="false"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/edit_bg"
+            android:layout_marginLeft="45dp"
+            android:layout_toRightOf="@+id/kl_refund_txt"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textColor="#18a4ec"
+        android:textSize="16sp"
+        android:text="提示:" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/text_color"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="1.退款为:将学费钱包中的余额原路转回学付宝中"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/text_color"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="2.退款金额默认为全部余额,可进行修改"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/text_color"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:text="3.退款金额不能大于最后一笔充值金额"/>
+
+
+    <Button
+        android:id="@+id/refund_btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/xcrount_basecolor_5"
+        android:text="不退了"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/refund_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/xcrount_red_5"
+        android:text="退款"
+        android:textColor="@color/base_color"
+        android:textSize="18sp" />
+
+</LinearLayout>  

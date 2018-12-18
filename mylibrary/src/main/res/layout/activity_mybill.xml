@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/edit_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_menu_style"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/white"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/all_bill_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/bill_backgroud_selecter"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/all_bill_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/all_bill_selecter"
+                android:gravity="center"
+                android:text="@string/all_bill"
+                android:textColor="@drawable/bill_text_selecter"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_bg" />
+
+        <LinearLayout
+            android:id="@+id/consume_bill_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/bill_backgroud_selecter"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/consume_bill_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/consume_bill_selecter"
+                android:gravity="center"
+                android:text="@string/consume_bill"
+                android:textColor="@drawable/bill_text_selecter"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_bg" />
+
+        <LinearLayout
+            android:id="@+id/recharge_bill_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="@drawable/bill_backgroud_selecter"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/recharge_bill_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/recharge_bill_selecter"
+                android:gravity="center"
+                android:text="@string/recharge_bill"
+                android:textColor="@drawable/bill_text_selecter"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_bg" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pull_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:background="@color/white"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="0dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        ptr:ptrDrawable="@drawable/loading_large"
+        ptr:ptrMode="both" />
+
+<!--     <ListView -->
+<!--         android:id="@+id/bill_list" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="0dp" -->
+<!--         android:layout_weight="1.0" -->
+<!--         android:divider="#00000000" -->
+<!--         android:dividerHeight="5dp" > -->
+<!--     </ListView> -->
+
+</LinearLayout>
