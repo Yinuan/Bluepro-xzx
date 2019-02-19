@@ -71,6 +71,7 @@ public class MainAdminActivity extends FragmentActivity {
 		Intent intent =getIntent();
 		String bPhone =intent.getStringExtra("tellPhone");
 		String prjid =intent.getStringExtra("PrjID");
+		String devSum =intent.getStringExtra("devSum");
 		Common.BASE_URL=intent.getStringExtra("app_url");
 		int num =bPhone.length();
 		String tell ="";
@@ -112,7 +113,7 @@ public class MainAdminActivity extends FragmentActivity {
 		MyApp.versionCode=MyApp.getLocalVersionName(MainAdminActivity.this);
 		sp = getSharedPreferences("adminInfo", Context.MODE_PRIVATE);
 		//loadingDialogProgress = GlobalTools.getInstance().showDailog(MainAdminActivity.this,"登入中.");
-		login(bPhone,prjid,"0");
+		login(bPhone,prjid,"0",devSum);
 	}
 
 
@@ -171,7 +172,7 @@ public class MainAdminActivity extends FragmentActivity {
 	}
 
 
-	protected void login(final String phonenum, String prjid, String checkcode) {
+	protected void login(final String phonenum, final String prjid, String checkcode, final String devSum) {
 		if (Common.isNetWorkConnected(MainAdminActivity.this)) {
 		/*	if (TextUtils.isEmpty(phonenum)) {
 				Common.showToast(MainAdminActivity.this, R.string.phonenum_null, Gravity.CENTER);
@@ -191,7 +192,7 @@ public class MainAdminActivity extends FragmentActivity {
 			ajaxParams.put("isOpUser",isOpUser);
 			ajaxParams.put("phoneSystem", "Android");
 			ajaxParams.put("version", MyApp.versionCode);
-			Log.d("MainAdminActivity", "ajaxParams:" + ajaxParams);
+
 			new FinalHttp().get(Common.BASE_URL + "login2", ajaxParams,
 					new AjaxCallBack<Object>() {
 
@@ -202,7 +203,7 @@ public class MainAdminActivity extends FragmentActivity {
 								loadingDialogProgress.dismiss();
 							}
 							String result = t.toString();
-							Log.e("MainAdminActivity", "login result = " + result);
+
 							PublicGetData publicGetData = new Gson().fromJson(result, PublicGetData.class);
 							if (publicGetData.error_code.equals("0") || publicGetData.error_code.equals("5")) {
 
@@ -237,6 +238,8 @@ public class MainAdminActivity extends FragmentActivity {
 								editor.commit();
 								pName=userInfo.PrjName;
 								EventBus.getDefault().postSticky("login_success");
+								//设置登记数量最大值
+								setDevNum(userInfo.PrjID+"",devSum);
 							} else if (publicGetData.error_code.equals("3")) {
 								Common.showToast(MainAdminActivity.this, R.string.yanzhengma_error, Gravity.CENTER);
 							} else {
@@ -259,6 +262,25 @@ public class MainAdminActivity extends FragmentActivity {
 		} else {
 			Toast.makeText(MainAdminActivity.this, "服务器连接不上,请检查你的网络", Toast.LENGTH_SHORT).show();
 		}
+
+	}
+
+	private void setDevNum(String prjid,String devSum) {
+
+		AjaxParams ajaxParams = new AjaxParams();
+
+		ajaxParams.put("PrjID",prjid);
+		ajaxParams.put("devSum",devSum);
+		ajaxParams.put("phoneSystem", "Android");
+		ajaxParams.put("version", MyApp.versionCode);
+		Log.d("MainAdminActivity", "ajaxParams:" + ajaxParams);
+		new FinalHttp().get(Common.BASE_URL + "setDevCount", ajaxParams, new AjaxCallBack<Object>() {
+			@Override
+			public void onSuccess(Object o) {
+				super.onSuccess(o);
+				Log.d("MainAdminActivity", "设置最大设备登记result:="+o.toString());
+			}
+		});
 
 	}
 

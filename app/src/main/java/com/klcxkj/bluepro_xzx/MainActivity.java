@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent();
                 intent.setClass(MainActivity.this, MainAdminActivity.class);
-                intent.putExtra("tellPhone","321123");
+                intent.putExtra("tellPhone","18565651403");
                 intent.putExtra("PrjID","0");
-                intent.putExtra("app_url","http://klcxkj-qzxy.cn:8087/appI/api/");//106.75.164.143
+                intent.putExtra("devSum","100"); //项目最大登记设备数
+                intent.putExtra("app_url","http://klcxkj-qzxy.cn/appI/api/");//106.75.164.143
                 startActivity(intent);
             }
         });
